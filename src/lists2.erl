@@ -187,32 +187,6 @@ ordkeysublist(N1, [H1|T1]=L1, N2, [H2|T2]=L2) ->
 ordkeysublist(_N1, L1, _N2, _L2) ->
     L1.
 
--ifdef(TEST).
--include_lib("eunit/include/eunit.hrl").
-
-ordkeysublist_test_() ->
-    [?_assertEqual(ordkeysublist(1, [{1}, {2}, {3}], [{2}]),
-                   [{1}, {3}])
-    ,?_assertEqual(ordkeysublist(1, [{1}, {2}, {3}], [{0}, {4}]),
-                   [{1}, {2}, {3}])
-    ,?_assertEqual(ordkeysublist(1, [{1}, {2}, {3}], [{0}, {1}, {3}, {4}]),
-                   [{2}])
-    ].
-
-ordkeysublist4_test_() ->
-    [?_assertEqual(ordkeysublist(1, [{1}, {2}, {3}], 1, [{2}]),
-                   [{1}, {3}])
-    ,?_assertEqual(ordkeysublist(1, [{1}, {2}, {3}], 1, [{0}, {4}]),
-                   [{1}, {2}, {3}])
-    ,?_assertEqual(ordkeysublist(1, [{1}, {2}, {3}], 1, [{0}, {1}, {3}, {4}]),
-                   [{2}])
-    ,?_assertEqual(ordkeysublist(1, [{1}, {1}, {2}, {3}], 1, [{0}, {1}, {3}, {4}]),
-                   [{1}, {2}])
-    ].
-
--endif.
-
-
 %% @doc Delete duplicates and SAVE the current elements' order.
 %% If the current order is not important, than use `lists:usort/1' instead.
 unique([H|T]) ->
